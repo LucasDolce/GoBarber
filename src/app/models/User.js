@@ -26,6 +26,11 @@ class User extends Model {
     return this;
   }
 
+  static associate(models) {
+    // belongsTo tipo de relacionamento (pertence a)
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
